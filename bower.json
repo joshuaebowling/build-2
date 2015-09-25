@@ -1,0 +1,20 @@
+{
+  "name": "reactStart",
+  "version": "0.0.0",
+  "homepage": "https://github.com/joshuaebowling/react-browserify-mocha-starter",
+  "authors": [
+    "Josh Bowling <joshuaebowling@mail.com>"
+  ],
+  "main": "app.js",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
