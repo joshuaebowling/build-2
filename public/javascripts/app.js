@@ -1,5 +1,5 @@
 var React = require('react'),
-App = require('./src/App.jsx'),
+App = require('./src/components/AppRoot.jsx'),
 $ = require('jquery'),
 	MyTrades;
 MyTrades = {};
