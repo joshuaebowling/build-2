@@ -20,17 +20,21 @@ module.exports = function(grunt) {
 				dest:"./public/javascripts/bundle.js",
 				dist: {
 		            options: {
-		               transform: [
-		                  ["babelify", {
-		                     loose: "all"
-		                  }]
-		               ]
+		            	nonStandard: true,
+		            	"transform": ["reactify"]
+		            },
+		            files: {
+		               // if the source file has an extension of es6 then
+		               // we change the name of the source file accordingly.
+		               // The result file's extension is always .js
+		               "./public/javascripts/bundle.js": ["./public/javascripts/app.js"] 
 		            }
 		        },
 				options: {
 					browserifyOptions: {
 						paths: ["./node_modules", "./public/javascripts"],
-						debug: true
+						debug: true,
+		            	"transform": ["reactify"]
 					}
 				}
 			}
