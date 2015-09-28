@@ -1,8 +1,21 @@
 var React = require('react');
-var dataGrid = require('react-datagrid');
+var UserName = require('./user/UserName.jsx');
+var Notifier = require('react-bs-notifier');
 var App = React.createClass({
+	alerts:[ 
+		{
+			type:'success',
+			message:'No More Script Running Errors',
+			headline:'New Messsage'
+		}
+	],
 	render: function() {
-		return <h1> Hello, {this.props.name} </h1>
+		return <div>
+		<h1><UserName lastName="johnson" firstName="john" /></h1>
+		<section>
+			<Notifier alerts={this.alerts}></Notifier>
+		</section>
+		</div>
 	}
 });
 module.exports = App;

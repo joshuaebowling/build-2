@@ -2,16 +2,19 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jasmine');
 	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-babel');
+	grunt.loadNpmTasks('grunt-mocha-test');
+	grunt.loadNpmTasks('grunt-mocha-cli');
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		browserify: {
 			specs: {
-				src: ["./public/tests/models/*.js", "./public/tests/collections/*.js", "./public/tests/observers/*.js"],
+				src: ["./public/tests/src/*/*.js"],
 				dest: "./public/test/specs.js",
 				options: {
 					browserifyOptions: {
 						debug: true,
 						paths: ["./node_modules", "./public/javascripts"],
+		            	"transform": ["reactify"]
 					}
 				}
 			},
@@ -19,11 +22,7 @@ module.exports = function(grunt) {
 				src: ["./public/javascripts/app.js"],
 				dest:"./public/javascripts/bundle.js",
 				dist: {
-		            options: {
-		            	nonStandard: true,
-		            	"transform": ["reactify"]
-		            },
-		            files: {
+			            files: {
 		               // if the source file has an extension of es6 then
 		               // we change the name of the source file accordingly.
 		               // The result file's extension is always .js
@@ -58,8 +57,15 @@ module.exports = function(grunt) {
 	            }
 	        }
 	    },
-
+		"mochacli": {
+	        options: {
+	          reporter: 'mocha-lcov-reporter',
+	          require:['should','jsdom','react'],
+	          compilers: ['./public/tests/compiler.js'],
+	          files:'./public/tests/components/test.UserName.js'
+	        }
+	      }
 	});
 	grunt.registerTask('bundle', ['browserify:bundle']);
-	grunt.registerTask('test', ['browserify:specs', 'jasmine']);
+	grunt.registerTask('test', ['mochacli']);
 };

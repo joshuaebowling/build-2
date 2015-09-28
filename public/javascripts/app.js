@@ -4,6 +4,6 @@ $ = require('jquery'),
 	MyTrades;
 MyTrades = {};
 React.render(
-	<AppRoot name="John"/>,
+	<AppRoot lastName="John" firstName="Johnson"/>,
 	$('#example')[0]
 );
