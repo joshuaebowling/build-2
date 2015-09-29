@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha --compilers .:public/tests/compiler.js public/tests/components/test.UserName.js"
+    "test": "grunt test"
   },
   "dependencies": {
     "async": "^1.4.2",

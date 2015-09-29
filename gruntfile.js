@@ -38,18 +38,10 @@ module.exports = function(grunt) {
 				}
 			}
 		},
-		jasmine: {
-			tests: {
-				src: [],
-				options: {
-					outfile: "public/test/_SpecRunner.html",
-					specs: "public/test/specs.js"    
-				}
-			}
-		},
 		babel: {
 	        options: {
-	            sourceMap: true
+	            sourceMap: true,
+	            nonStandard: true
 	        },
 	        dist: {
 	            files: {
@@ -57,15 +49,19 @@ module.exports = function(grunt) {
 	            }
 	        }
 	    },
-		"mochacli": {
-	        options: {
-	          reporter: 'mocha-lcov-reporter',
-	          require:['should','jsdom','react'],
-	          compilers: ['./public/tests/compiler.js'],
-	          files:'./public/tests/components/test.UserName.js'
-	        }
-	      }
-	});
+		mochaTest: {
+		      test: {
+		        options: {
+		          reporter: 'spec',
+		          captureFile: 'results.txt', // Optionally capture the reporter output to a file
+		          quiet: false, // Optionally suppress output to standard out (defaults to false)
+		          clearRequireCache: false, // Optionally clear the require cache before running tests (defaults to false)
+		          require: ['public/tests/compiler.js']
+		        },
+		        src: ['./public/tests/components/*.js']
+		      }
+		  }
+  	});
 	grunt.registerTask('bundle', ['browserify:bundle']);
-	grunt.registerTask('test', ['mochacli']);
+	grunt.registerTask('test', ['browserify:specs','mochaTest']);
 };
