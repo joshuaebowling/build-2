@@ -4,8 +4,8 @@
    * npm install
    * npm test
    * npm start
+
 ## How it works as of now:
----
 It's pretty simple so far as I can tell:
   * For packaging, browserify pre-processes w/ reactify.
   * grunt-mocha-test is using a compiler I borrowed from [mocha-react](https://github.com/danvk/mocha-react), so thanks @danvk and all the contributors to that fine repository.
