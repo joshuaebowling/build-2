@@ -7,17 +7,6 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		browserify: {
-			specs: {
-				src: ["./public/tests/src/*/*.js"],
-				dest: "./public/test/specs.js",
-				options: {
-					browserifyOptions: {
-						debug: true,
-						paths: ["./node_modules", "./public/javascripts"],
-		            	"transform": ["reactify"]
-					}
-				}
-			},
 			bundle: {
 				src: ["./public/javascripts/app.js"],
 				dest:"./public/javascripts/bundle.js",
@@ -63,5 +52,5 @@ module.exports = function(grunt) {
 		  }
   	});
 	grunt.registerTask('bundle', ['browserify:bundle']);
-	grunt.registerTask('test', ['browserify:specs','mochaTest']);
+	grunt.registerTask('test', ['mochaTest']);
 };
