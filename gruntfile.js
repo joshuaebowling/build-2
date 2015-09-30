@@ -22,7 +22,7 @@ module.exports = function(grunt) {
 					browserifyOptions: {
 						paths: ["./node_modules", "./public/javascripts"],
 						debug: true,
-		            	"transform": ["reactify"]
+		            	"transform": ["babelify","reactify"]
 					}
 				}
 			}
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
 		mochaTest: {
 		      test: {
 		        options: {
-		          reporter: 'spec',
+		          reporter: 'mocha-unfunk-reporter',
 		          captureFile: 'results.txt', // Optionally capture the reporter output to a file
 		          quiet: false, // Optionally suppress output to standard out (defaults to false)
 		          clearRequireCache: false, // Optionally clear the require cache before running tests (defaults to false)
