@@ -1,9 +1,7 @@
 module.exports = function(grunt) {
-	grunt.loadNpmTasks('grunt-contrib-jasmine');
 	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-babel');
 	grunt.loadNpmTasks('grunt-mocha-test');
-	grunt.loadNpmTasks('grunt-mocha-cli');
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		browserify: {
@@ -42,7 +40,6 @@ module.exports = function(grunt) {
 		      test: {
 		        options: {
 		          reporter: 'mocha-unfunk-reporter',
-		          captureFile: 'results.txt', // Optionally capture the reporter output to a file
 		          quiet: false, // Optionally suppress output to standard out (defaults to false)
 		          clearRequireCache: false, // Optionally clear the require cache before running tests (defaults to false)
 		          require: ['public/tests/compiler.js']
