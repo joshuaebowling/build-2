@@ -53,6 +53,7 @@
     "react-tools": "^0.13.3",
     "reactify": "^1.1.1",
     "should": "^7.1.0",
+    "uglifyify": "^3.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.3.1"

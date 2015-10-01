@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 					browserifyOptions: {
 						paths: ["./node_modules", "./public/javascripts"],
 						debug: true,
-		            	"transform": ["babelify","reactify"]
+		            	"transform": ["babelify", "reactify", "uglifyify"]
 					}
 				}
 			}
