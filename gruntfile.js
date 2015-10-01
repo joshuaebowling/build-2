@@ -2,28 +2,52 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-babel');
 	grunt.loadNpmTasks('grunt-mocha-test');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		browserify: {
 			bundle: {
-				src: ["./public/javascripts/app.js"],
+				src: ["./public/javascripts/app.js", "./public/javascripts/lib.js"],
 				dest:"./public/javascripts/bundle.js",
 				dist: {
 			            files: {
 		               // if the source file has an extension of es6 then
 		               // we change the name of the source file accordingly.
 		               // The result file's extension is always .js
-		               "./public/javascripts/bundle.js": ["./public/javascripts/app.js"] 
+		               "./public/javascripts/bundle.js": ["./public/javascripts/app.js"]
+
 		            }
 		        },
 				options: {
 					browserifyOptions: {
 						paths: ["./node_modules", "./public/javascripts"],
 						debug: true,
-		            	"transform": ["babelify", "reactify", "uglifyify"]
+						external:['react'],
+		            	"transform": ["babelify", "reactify"]
+					}
+				}
+			},
+			vendor: {
+				src: ["./public/javascripts/lib.js"],
+				dest:"./public/javascripts/vendor.js",
+				dist: {
+			            files: {
+		               // if the source file has an extension of es6 then
+		               // we change the name of the source file accordingly.
+		               // The result file's extension is always .js
+		               "./public/javascripts/vendor.js": ["./public/javascripts/lib.js"]
+
+		            }
+		        },
+				options: {
+					browserifyOptions: {
+						paths: ["./node_modules", "./public/javascripts"],
+						debug: true,
+		            	"transform": ["babelify", "reactify"]
 					}
 				}
 			}
+
 		},
 		babel: {
 	        options: {
@@ -46,8 +70,18 @@ module.exports = function(grunt) {
 		        },
 		        src: ['./public/tests/components/*.js']
 		      }
+		},
+		uglify: {
+		    my_target: {
+		      files: {
+		        'public/javascripts/bundle.min.js':['public/javascripts/bundle.js']
+		      },
+		      options:{
+		      	mangle:false
+		      }
+		    }
 		  }
   	});
-	grunt.registerTask('bundle', ['browserify:bundle']);
+	grunt.registerTask('bundle', ['browserify:bundle','browserify:vendor','uglify']);
 	grunt.registerTask('test', ['mochaTest']);
 };
