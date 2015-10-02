@@ -1,4 +1,8 @@
 module.exports = function(grunt) {
+	
+	var externals = [
+	  'react'
+ 	];
 	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-babel');
 	grunt.loadNpmTasks('grunt-mocha-test');
@@ -7,7 +11,7 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		browserify: {
 			bundle: {
-				src: ["./public/javascripts/app.js", "./public/javascripts/lib.js"],
+				src: ["./public/javascripts/app.js"],
 				dest:"./public/javascripts/bundle.js",
 				dist: {
 			            files: {
@@ -22,20 +26,19 @@ module.exports = function(grunt) {
 					browserifyOptions: {
 						paths: ["./node_modules", "./public/javascripts"],
 						debug: true,
-						external:['react'],
-		            	"transform": ["babelify", "reactify"]
+		            	"transform": ["babelify", "reactify"],
 					}
 				}
 			},
 			vendor: {
-				src: ["./public/javascripts/lib.js"],
+				src: ["./public/javascripts/src/lib.js"],
 				dest:"./public/javascripts/vendor.js",
 				dist: {
 			            files: {
 		               // if the source file has an extension of es6 then
 		               // we change the name of the source file accordingly.
 		               // The result file's extension is always .js
-		               "./public/javascripts/vendor.js": ["./public/javascripts/lib.js"]
+		               "./public/javascripts/vendor.js": ["./public/javascripts/src/lib.js"]
 
 		            }
 		        },
@@ -74,7 +77,8 @@ module.exports = function(grunt) {
 		uglify: {
 		    my_target: {
 		      files: {
-		        'public/javascripts/bundle.min.js':['public/javascripts/bundle.js']
+		        'public/javascripts/bundle.min.js':['public/javascripts/bundle.js'],
+		        'public/javascripts/vendor.min.js':['public/javascripts/vendor.js']
 		      },
 		      options:{
 		      	mangle:false
