@@ -1,8 +1,10 @@
 # express-react-browserify-grunt-mocha-starter
 ## Purpose: regardless of the project, packaging for the web and unit testing are necessary. As react is quite fashionable, I want to build with it.
 ## Usage:
-   * You'll need mocha grunt-cli & browserify installed globally (npm install mocha grunt-cli browserify -g)
+   * You'll need bower mocha grunt-cli & browserify installed globally (npm install bower mocha grunt-cli browserify -g)
    * npm install
+   * grunt bundle
+   * bower install
    * npm test
    * npm start
 
