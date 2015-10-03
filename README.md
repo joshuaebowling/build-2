@@ -14,4 +14,4 @@ It's pretty simple so far as I can tell:
   * grunt-mocha-test is using a compiler I borrowed from [mocha-react](https://github.com/danvk/mocha-react), so thanks @danvk and all the contributors to that fine repository.
 
 **A note about the express implementation: it's very minimal. I just wanted a webserver that could serve a single page with some react on it.**
-* I've used iojs 3.3.0 in to run it.
+* I've used iojs 3.3.0 to run it.
