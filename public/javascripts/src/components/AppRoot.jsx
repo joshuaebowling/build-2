@@ -1,5 +1,5 @@
 var React = require('react');
-var UserName = require('./user/UserName.jsx');
+var TradeTable = require('./TradeTable.jsx');
 var Notifier = require('react-bs-notifier');
 var App = React.createClass({
 	alerts:[ 
@@ -11,9 +11,8 @@ var App = React.createClass({
 	],
 	render: function() {
 		return <div>
-		<h1><UserName lastName="johnson" firstName="john" /></h1>
 		<section>
-			<Notifier alerts={this.alerts}></Notifier>
+			<TradeTable></TradeTable>
 		</section>
 		</div>
 	}
