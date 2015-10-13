@@ -1,3 +1,4 @@
 module.exports = {
-	TradeStoreConstants: require('./TradeStoreConstants')
+	TradeStoreConstants: require('./TradeStoreConstants'),
+	CurrencyStoreConstants: require('./CurrencyStoreConstants')
 };

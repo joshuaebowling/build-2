@@ -1,11 +1,11 @@
 var data, makeData, single, values;
 
 values = {
-	Contract: [],
-	Principal: [],
-	Collateral: [],
-	Notional: [],
-	Expiry:[],
+	Contract: ['AAPL','DELL','ACN', 'ADT', 'AET', 'AG', 'GE', 'AHT', 'AL'],
+	Principal: [1],
+	Collateral: [1],
+	Notional: [1],
+	Expiry:['never'],
 	TimeToExpiry:[],
 	PAndL:[],
 	Status:[],

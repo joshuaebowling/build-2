@@ -1,6 +1,6 @@
 var _, MaterialUI, React, 
 	Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn,
-	AppDispatcher, pubsub, TradeStore, TradeStoreActions, TradeStoreConstants, _trades;
+	AppDispatcher, pubsub, CurrencyLabel, TradeStore, TradeStoreActions, TradeStoreConstants, _trades;
 
 React = require('react');
 MaterialUI = require('material-ui');
@@ -11,6 +11,7 @@ TradeStoreActions = require('../actions/TradeStoreActions');
 TradeStoreConstants = require('../constants/TradeStoreConstants');
 pubsub = require('../pubsub/tradeStorePubSub');
 _trades = [];
+CurrencyLabel = require('./currency/CurrencyLabel.jsx');
 
 Table = MaterialUI.Table;
 TableBody = MaterialUI.TableBody;
@@ -78,7 +79,7 @@ module.exports = React.createClass({
 		    <TableRow>
 		      <TableHeaderColumn tooltip='Actions'>Contract</TableHeaderColumn>
 		      <TableHeaderColumn tooltip='Name'>Principal</TableHeaderColumn>
-		      <TableHeaderColumn tooltip='Id'>Collateral</TableHeaderColumn>
+		      <TableHeaderColumn tooltip='Id'>Collateral <CurrencyLabel /></TableHeaderColumn>
 		      <TableHeaderColumn tooltip='Price'>Notional</TableHeaderColumn>
 		      <TableHeaderColumn tooltip='Price'>Expiry</TableHeaderColumn>
 		      <TableHeaderColumn tooltip='Price'>Time to Expiry</TableHeaderColumn>

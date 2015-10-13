@@ -1,20 +1,20 @@
-var React = require('react');
-var TradeTable = require('./TradeTable.jsx');
-var Notifier = require('react-bs-notifier');
-var App = React.createClass({
-	alerts:[ 
-		{
-			type:'success',
-			message:'No More Script Running Errors',
-			headline:'New Messsage'
-		}
-	],
+var App, CurrencySelector, injectTapEventPlugin, Notifier, React, TradeTable; 
+injectTapEventPlugin = require("react-tap-event-plugin")();
+React = require('react');
+TradeTable = require('./TradeTable.jsx');
+CurrencySelector = require('./currency/CurrencySelector.jsx');
+Notifier = require('react-bs-notifier');
+App = React.createClass({
 	render: function() {
 		return <div>
 		<section>
 			<TradeTable></TradeTable>
 		</section>
+		<section>
+			<CurrencySelector></CurrencySelector>
+		</section>
 		</div>
 	}
 });
+
 module.exports = App;
